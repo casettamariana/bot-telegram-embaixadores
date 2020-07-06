@@ -36,59 +36,162 @@ function processMessage($message)
         $text = $message['text'];
 
         do {
-            if ((strpos($text, "/start") === 0) || (strpos($text, "Voltar ao início") === 0) || (strpos($text, "oi") === 0)) {
+            if ((strpos($text, "/start") === 0) || (strpos($text, "↩️ Voltar ao início") === 0) || (strpos($text, "oi") === 0) || (strpos($text, "Oi") === 0) || (strpos($text, "Olá") === 0) || (strpos($text, "ola") === 0) || (strpos($text, "Olá") === 0)) {
                 sendMessage("sendMessage", array('chat_id' => $chat_id, "text" => 'Olá, ' . $message['from']['first_name'] .
-                    '!' . PHP_EOL . 'Estou aqui para ajudar com o que for necessário para transformar sua jornada embaixadora incrível!',
+                    '!' . PHP_EOL . 'Estou aqui para facilitar sua Experiência Embaixadora!'
+                    . PHP_EOL . 'Por favor, selecione uma das opções abaixo:',
                     //Botões do Telegram
                     'reply_markup' => array(
                         'keyboard' => array(
-                            array('Cronograma', 'Datas Importantes'),
-                            array('Podcasts', 'FAQ'),
+                            array('📆 Cronograma do Programa', '📒 Agenda'),
+                            array('🎧 Podcasts', '❓ FAQ'),
+                            array('💊 Pílulas de Conhecimento', '👩🏽‍💻 Atividades'),
                         ),
+                        // 'resize_keyboard' => true,
                         'one_time_keyboard' => true,
                     ),
                 ));
             } else {
                 switch ($text) {
-                    case 'Cronograma':
+                    case '📆 Cronograma do Programa':
                         getCronograma('cronograma', $text, $chat_id, $message);
                         break;
-                    case 'Datas Importantes':
-                        getDatas('datas', $text, $chat_id, $message);
+                    case '📒 Agenda':
+                        getAgenda('datas', $text, $chat_id, $message);
                         break;
-                    case 'FAQ':
+                    case '❓ FAQ':
                         getFaq('faq', $text, $chat_id, $message);
                         break;
-                    case 'Podcasts':
+                    case '🎧 Podcasts':
                         getPodcasts('podcast', $text, $chat_id, $message);
                         break;
                     case 'Como funciona o podcast?':
                         getComoFuncionaPodcast('funcPodcast', $text, $chat_id, $message);
                         break;
-                    case 'Continuo com duvidas :(':
+                    case '💊 Pílulas de Conhecimento':
+                        // getPilulas('funcPilulas', $text, $chat_id, $message);
+                        sendMessage("sendVideo",
+                            array(
+                                'chat_id' => $chat_id,
+                                // 'text' => $message['from']['first_name'] . ', segue link das píluas:' . PHP_EOL . 'Pílula dia xx/xx: www.google.com' . PHP_EOL . 'Pílula dia xx/xx: www.google.com',
+                                'video' => 'https://www.casettec.com/bot/Pílula1test-Full.mp4',
+                                'thumb' => 'https://www.casettec.com/bot/video.png',
+                                // 'capition' => 'Segue a pílula 1',
+                                'supportsStreaming' => true,
+                                // 'duration' => '222',
+                                // 'mime_type' => 'MP4',
+                                // 'width' => null,
+                                // 'height' => null,
+                                //Botões do Telegram
+                                'reply_markup' => array(
+                                    'keyboard' => array(
+                                        array('O que são pílulas?', '↩️ Voltar ao início'),
+                                    ),
+                                    'resize_keyboard' => true,
+                                    'one_time_keyboard' => true,
+                                ),
+                            )
+                        );
+                        break;
+                    case 'O que são pílulas?':
                         sendMessage("sendMessage",
                             array(
                                 'chat_id' => $chat_id,
-                                "text" => $message['from']['first_name'] . ', nos escreva sua duvida',
+                                "text" => $message['from']['first_name'] . ', as Pílulas são doses quinzenais de conhecimento extra, complementares ao conteúdo teórico :)',
 
                                 //Botões do Telegram
                                 'reply_markup' => array(
                                     'keyboard' => array(
-                                        array('Voltar ao início'),
+                                        array('↩️ Voltar ao início'),
                                     ),
+                                    'resize_keyboard' => true,
+                                    'one_time_keyboard' => true,
+                                ),
+                            )
+                        );
+                        break;
+                    case '👩🏽‍💻 Atividades':
+                        sendMessage("sendDocument",
+                            array(
+                                'chat_id' => $chat_id,
+                                'document' => 'https://www.casettec.com/bot/Atividade-Embaixadora-1.pdf',
+                                'filename' => 'Atividade-Embaixadora-1.pdf',
+                                'caption' => $message['from']['first_name'] . ', segue a atividade 1.',
+
+                                //Botões do Telegram
+                                'reply_markup' => array(
+                                    'keyboard' => array(
+                                        array('↩️ Voltar ao início'),
+                                    ),
+                                    'resize_keyboard' => true,
+                                    'one_time_keyboard' => true,
+                                ),
+                            )
+
+                        );
+                        break;
+                    case 'Continuo com duvidas :(':
+                        sendMessage("sendMessage",
+                            array(
+                                'chat_id' => $chat_id,
+                                "text" => $message['from']['first_name'] . ', calma, que vai dar tudo certo!' . PHP_EOL . 'Fale com o tutor de sua turma ou envie um e-mail para embaixadoresdacidadania@goias.gov.br',
+
+                                //Botões do Telegram
+                                'reply_markup' => array(
+                                    'keyboard' => array(
+                                        array('↩️ Voltar ao início'),
+                                    ),
+                                    'resize_keyboard' => true,
                                     'one_time_keyboard' => true,
                                 ),
                             )
                         );
                         break;
                     default:
-                        sendMessage("sendMessage", array('chat_id' => $chat_id, "text" => 'Desculpe, tente uma alternativa dos botões 1'));
+                        sendMessage("sendMessage",
+                            array(
+                                'chat_id' => $chat_id,
+                                "text" => 'Ops... Essa dúvida não poderei te responder no momento.' . PHP_EOL .
+                                'Fale com o tutor de sua turma ou envie um e-mail para:' . PHP_EOL .
+                                'embaixadoresdacidadania@goias.gov.br' . PHP_EOL . PHP_EOL .
+                                'Ou se preferir escolha uma opção dos botões!',
+                                //Botões do Telegram
+                                'reply_markup' => array(
+                                    'keyboard' => array(
+                                        array('📆 Cronograma do Programa', '📒 Agenda'),
+                                        array('🎧 Podcasts', '❓ FAQ'),
+                                        array('💊 Pílulas de Conhecimento', '👩🏽‍💻 Atividades'),
+                                    ),
+                                    // 'resize_keyboard' => true,
+                                    'one_time_keyboard' => true,
+                                ),
+                            )
+                        );
                 }
             }
         } while ($text != 0);
 
     } else {
-        sendMessage("sendMessage", array('chat_id' => $chat_id, "text" => 'Clique nos botões para que eu possa te ajudar!!'));
+        sendMessage("sendMessage",
+            array(
+                'chat_id' => $chat_id,
+                "text" => 'Ops... Essa dúvida não poderei te responder no momento.' . PHP_EOL .
+                'Fale com o tutor de sua turma ou envie um e-mail para:' . PHP_EOL .
+                'embaixadoresdacidadania@goias.gov.br' . PHP_EOL . PHP_EOL .
+                'Ou se preferir escolha uma opção dos botões!',
+
+                //Botões do Telegram
+                'reply_markup' => array(
+                    'keyboard' => array(
+                        array('📆 Cronograma do Programa', '📒 Agenda'),
+                        array('🎧 Podcasts', '❓ FAQ'),
+                        array('💊 Pílulas de Conhecimento', '👩🏽‍💻 Atividades'),
+                    ),
+                    // 'resize_keyboard' => true,
+                    'one_time_keyboard' => true,
+                ),
+            )
+        );
     }
 }
 

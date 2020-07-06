@@ -1,5 +1,9 @@
 https://api.telegram.org/bot971060829:AAHg2nT-vf89WwX4m1jih1ijYpplfVeTlRM/setwebhook?url=https://www.casettec.com/bot/bot-embaixadores.php
+https://api.telegram.org/bot971060829:AAHg2nT-vf89WwX4m1jih1ijYpplfVeTlRM/setwebhook?url=https://www.estudantesdeatitude.go.gov.br/embaixadores/bot-embaixadores.php
 
 https://api.telegram.org/bot1138844181:AAEVJFHtCqV8wgZjDecCl34ZF_ijcHNSLTo/setwebhook?url=https://www.casettec.com/bot/bot-embaixadoresDaCidadania.php
+https://api.telegram.org/bot1138844181:AAEVJFHtCqV8wgZjDecCl34ZF_ijcHNSLTo/setwebhook?url=https://www.estudantesdeatitude.go.gov.br/embaixadores/bot-embaixadoresDaCidadania.php
 
  https://api.telegram.org/bot<token>/setwebhook?url=https://www.example.com/bot/temp.php
+
+https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id=-100{CHAT_ID}@{CHAT_ALIAS}&text=hi

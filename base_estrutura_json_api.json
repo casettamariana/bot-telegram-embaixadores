@@ -1,0 +1,76 @@
+msg {
+  message_id: 12,
+  from: {
+    id: 251044620,
+    is_bot: false,
+    first_name: 'Mari',
+    username: 'cazvmari',
+    language_code: 'pt-br'
+  },
+  chat: {
+    id: 251044620,
+    first_name: 'Mari',
+    username: 'cazvmari',
+    type: 'private'
+  },
+  date: 1593796332,
+  text: '/start',
+  entities: [ { offset: 0, length: 6, type: 'bot_command' } ]
+}
+msg {
+  message_id: 13,
+  from: {
+    id: 251044620,        
+    is_bot: false,        
+    first_name: 'Mari',   
+    username: 'cazvmari', 
+    language_code: 'pt-br'
+  },
+  chat: {
+    id: 251044620,        
+    first_name: 'Mari',   
+    username: 'cazvmari', 
+    type: 'private'       
+  },
+  date: 1593796489,
+  text: '/start',
+  entities: [ { offset: 0, length: 6, type: 'bot_command' } ]
+}
+msg {
+  message_id: 14,
+  from: {
+    id: 251044620,
+    is_bot: false,
+    first_name: 'Mari',
+    username: 'cazvmari',
+    language_code: 'pt-br'
+  },
+  chat: {
+    id: 251044620,
+    first_name: 'Mari',
+    username: 'cazvmari',
+    type: 'private'
+  },
+  date: 1593796499,
+  text: '/start',
+  entities: [ { offset: 0, length: 6, type: 'bot_command' } ]
+}
+msg {
+  message_id: 15,
+  from: {
+    id: 251044620,
+    is_bot: false,
+    first_name: 'Mari',
+    username: 'cazvmari',
+    language_code: 'pt-br'
+  },
+  chat: {
+    id: 251044620,
+    first_name: 'Mari',
+    username: 'cazvmari',
+    type: 'private'
+  },
+  date: 1593796618,
+  text: '/start',
+  entities: [ { offset: 0, length: 6, type: 'bot_command' } ]
+}

@@ -11,8 +11,10 @@ function getCronograma($opcao, $texto, $chat_id, $message)
             //Botões do Telegram
             'reply_markup' => array(
                 'keyboard' => array(
-                    array('Voltar ao início'),
+                    array('↩️ Voltar ao início'),
                 ),
+                'resize_keyboard' => true,
+                'one_time_keyboard' => true,
             ),
         )
     );
