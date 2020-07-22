@@ -1,7 +1,5 @@
 <?php
-//Produção: 1138844181:AAEVJFHtCqV8wgZjDecCl34ZF_ijcHNSLTo
-//Homolog: 971060829:AAHg2nT-vf89WwX4m1jih1ijYpplfVeTlRM
-define('BOT_TOKEN', '971060829:AAHg2nT-vf89WwX4m1jih1ijYpplfVeTlRM');
+define('BOT_TOKEN', 'TOKEN');
 define('API_URL', 'https://api.telegram.org/bot' . BOT_TOKEN . '/');
 
 require 'btnCronograma.php';
